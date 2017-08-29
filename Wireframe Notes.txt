@@ -1,0 +1,13 @@
+search
+
+Position
+Type (full time, pt, contract)
+location
+benefits
+reviews
+company size
+
+
+Display - preview
+All of the above
+2 line preview of job description
