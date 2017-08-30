@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>IndeedApp</title>
 	<!-- <link rel="stylesheet" href="dev/styles/style.css"> -->
-		
+		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
 </head>
 <body>
 	<section>
@@ -20,7 +20,8 @@
 			</select>
 			as a
 			<input type="text" class="jobTitle" value-"" placeholder="any job">
-			in <input type="text" class="jobLocation" value-"" placeholder="any city">
+			in 
+			<input type="text" id="jobLocation" value-"" placeholder="any city">
 		<div class="userSubmit-container">	
 			<button class="userSubmit" type="submit"> Find a Job </button> 
 		</div>
