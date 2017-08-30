@@ -1,30 +1,35 @@
 // our App
-indeedApp = {};
+var indeedApp = {};
 indeedApp.apiKey = '1211867702868069'
 indeedApp.endpoint = 'https://api.indeed.com/ads/apisearch'
 
 // set up formInputs object
-const formInputs = {};
+var formInputs = {};
+
+// Document Ready Calls Init
 
 // Init Function
 indeedApp.init = () => {
 	indeedApp.events();
-	console.log('hi!')
+	console.log('hi!');
 };
 
-// Document Ready Calls Init
-$(indeedApp.init);
+
 
 // Event Listeners
 indeedApp.events = () => {
-	$('form').on('submit', indeedApp.handleSubmit); // on submit of Form element, runs handleSubmit function.
-};
-
-indeedApp.handleSubmit = function(e) {
+	$('form').on('submit', function(e) { // on submit of Form element, runs handleSubmit function.
 	e.preventDefault();
-	formInputs.value = $('input').val(); // Grab Input Value and put in formInputs Object
+	formInputs.query = $('.jobTitle').val(); // Grab Input Value and put in formInputs Object
+	formInputs.location = $('.jobLocation').val();
+	formInputs.type = $('.jobType').val();
+
 	indeedApp.getJobs(); // Make AJAX call on Submit
-};
+	});
+}
+
+// indeedApp.handleSubmit = function(e) {
+// };
 
 // Ajax Call
 indeedApp.getJobs = function() {
@@ -38,23 +43,26 @@ indeedApp.getJobs = function() {
 				publisher: indeedApp.apiKey,
 				v: 2,
 				format: 'json',
-				q: `${formInputs.value}`,
-				l: 'toronto',
+				q: formInputs.query,
+				l: formInputs.location,
 				// sort: 'date',
 				radius: 25,
 				// st: 'jobsite',
-				// jt: 'fulltime',
+				jt: formInputs.jobType,
 				// start: 0,
-				// limit: 10,
+				limit: 50,
 				// fromage: 14,
 				// filter: 0,
 				// latlong: 1,
-				co: 'ca'
-			}
-		}
+				co: 'ca',
+			},
+		},
 	})
 	.then(function(res) {
-		var data = res.results;
-		console.log(res.results)
+		// var data = res;
+		console.log(res.results);
 	});
 };
+
+
+$(indeedApp.init);
