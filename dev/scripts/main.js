@@ -32,12 +32,16 @@ indeedApp.events = () => {
  //   });
 
 	$('form').on('submit', function(e) { // on submit of Form element, runs handleSubmit function.
-	e.preventDefault();
-	formInputs.query = $('.jobTitle').val(); // Grab Input Value and put in formInputs Object
-	formInputs.location = $('.jobLocation').val();
-	formInputs.type = $('.jobType').val();
+		e.preventDefault();
 
-	indeedApp.getJobs(); // Make AJAX call on Submit
+		// empty container
+		$('.cardsContainer').empty();
+
+		formInputs.query = $('.jobTitle').val(); // Grab Input Value and put in formInputs Object
+		formInputs.location = $('.jobLocation').val();
+		formInputs.type = $('.jobType').val();
+
+		indeedApp.getJobs(); // Make AJAX call on Submit
 	});
 }
 
@@ -72,10 +76,27 @@ indeedApp.getJobs = function() {
 		},
 	})
 	.then(function(res) {
-		// var data = res;
-		console.log(res.results);
+		var jobsDataArray = res.results;
+		console.log(jobsDataArray)
+		// console.log(res.results);
+		indeedApp.displayJobs(jobsDataArray);
 	});
 };
 
+indeedApp.displayJobs = function(jobs) {
+	jobs.forEach(function(job, index) {
 
+		let jobTitle = `<h3>${job.jobtitle}<h3>`;
+		let jobDesc = `<p>${job.snippet}<p>`
+		// let jobDesc = $('<p>').text(job.snippet);
+		console.log(job.url)
+		let jobUrl = `<a href ${job.url}>website</a>`
+		let jobCard = $('<div>').append(jobTitle, jobDesc, jobUrl)
+
+		// console.log(jobTitle);
+	// 	// Print Card
+		$('.cardsContainer').append(jobCard);
+	// })
+	})
+};
 $(indeedApp.init);
