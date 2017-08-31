@@ -1,4 +1,5 @@
 @import 'setup';
+
 * {
 	transition: all 0.5s ease-in-out;
 }
@@ -7,9 +8,11 @@
 	margin: 0 auto;
 }
 
+
 body {
 	background: skyblue;
 }
+
 
 // p.jobDesc {
 
@@ -21,3 +24,20 @@ body {
 p.bigBox {
 	display: block;
 }
+
+.wrapper {
+	max-width: 1150px;
+	margin: 0 auto;
+}
+
+
+
+.jobCard-container {
+	display: block;
+	max-width: calc(50% - 40px);
+	float: left;
+	margin: 20px;
+	// height: 400px;
+}
+
+
