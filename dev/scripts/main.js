@@ -35,6 +35,8 @@ indeedApp.events = () => {
 	$('form').on('submit', function(e) { // on submit of Form element, runs handleSubmit function.
 		e.preventDefault();
 
+		$('.userInputs').addClass('fixed-header');
+
 		// empty container
 		$('.cardsContainer').empty();
 
@@ -99,15 +101,6 @@ indeedApp.displayJobs = function(jobs) {
 };
 
 $(indeedApp.init);
-
-$(window).scroll(function(){
-    if ($(window).scrollTop() >= 300) {
-       $('userInputs').addClass('fixed-header');
-    }
-    else {
-       $('nav').removeClass('fixed-header');
-    }
-});
 
 // class JobCard {
 // 	constructor(jobTitle, jobDesc) {
