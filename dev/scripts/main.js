@@ -87,11 +87,11 @@ indeedApp.displayJobs = function(jobs) {
 	jobs.forEach(function(job, index) {
 
 		let jobTitle = `<h3>${job.jobtitle}<h3>`;
+		let jobComp = `<h4>${job.company}<h4>`;
 		let jobDesc = `<p>${job.snippet}<p>`
-		// let jobDesc = $('<p>').text(job.snippet);
 		console.log(job.url)
 		let jobUrl = `<a href ${job.url}>website</a>`
-		let jobCard = $('<div>').append(jobTitle, jobDesc, jobUrl)
+		let jobCard = $(`<div class="jobCard-container">`).append(jobTitle, jobComp, jobDesc, jobUrl)
 
 		// console.log(jobTitle);
 	// 	// Print Card
