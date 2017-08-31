@@ -112,11 +112,7 @@ indeedApp.displayJobs = function(jobs) {
 };
 $(indeedApp.init);
 
-<<<<<<< HEAD
-=======
 
-
->>>>>>> 8282acdcded7951d33e59959df46995e8715794a
 // class JobCard {
 // 	constructor(jobTitle, jobDesc) {
 // 		this.jobTitle = jobTitle;

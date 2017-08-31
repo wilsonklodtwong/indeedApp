@@ -1,5 +1,17 @@
 @import 'setup';
 
+
+@font-face {
+	font-family: 'loveloblack', arial, sans-serif ;
+	src: url('lovelo_black-webfont.woff2') format('woff2'),
+		url('lovelo_black-webfont.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+body {
+	background-color: blue;
+}
+
 * {
 	transition: all 0.5s ease-in-out;
 }
@@ -11,12 +23,10 @@
 
 body {
 	background: skyblue;
+	font-family: 'Open Sans', sans-serif;
+
 }
 
-
-// p.jobDesc {
-
-// }
 
 .jobDesc {
 		display: none;
