@@ -33,23 +33,22 @@ p.bigBox {
 	display: block;
 }
 
-.wrapper {
-	max-width: 1150px;
-	margin: 0 auto;
+// p.jobDesc {
+
+// }
+
+.jobDesc {
+	display: none;
 }
 
-
-
-.jobCard-container {
+p.bigBox {
 	display: block;
-	max-width: calc(50% - 40px);
-	float: left;
-	margin: 20px;
-	// height: 400px;
 }
+
 
 .fixed-header {
 	position: fixed;
 	top:0; left:0;
 	width: 100%; 
 }
+
