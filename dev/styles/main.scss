@@ -1,9 +1,28 @@
 @import 'setup';
 
+* {
+	transition: all 0.5s ease-in-out;
+}
+.container {
+	max-width: 900px;
+	margin: 0 auto;
+}
 
 
 body {
 	background: skyblue;
+}
+
+
+// p.jobDesc {
+
+// }
+
+.jobDesc {
+		display: none;
+}
+p.bigBox {
+	display: block;
 }
 
 .wrapper {
@@ -20,4 +39,5 @@ body {
 	margin: 20px;
 	// height: 400px;
 }
+
 
