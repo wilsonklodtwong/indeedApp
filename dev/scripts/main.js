@@ -108,9 +108,17 @@ indeedApp.displayJobs = function(jobs) {
 		$('.cardsContainer').append(jobCard);
 	})
 };
+
 $(indeedApp.init);
 
-
+$(window).scroll(function(){
+    if ($(window).scrollTop() >= 100vh) {
+       $('nav').addClass('fixed-header');
+    }
+    else {
+       $('nav').removeClass('fixed-header');
+    }
+});
 
 // class JobCard {
 // 	constructor(jobTitle, jobDesc) {
