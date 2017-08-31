@@ -43,6 +43,14 @@ indeedApp.events = () => {
 
 		indeedApp.getJobs(); // Make AJAX call on Submit
 	});
+//write a function so that on cardsContainer click, we want to toggle the class of p tag which is a display none to display block (needs to be specific to the one clicked)
+	$('.cardsContainer').on('click', '.jobCard-container', function(){
+		var expand = $(this).find('.jobDesc');
+		expand.toggleClass('bigBox');
+		console.log('hi!');
+		// $(this).toggleClass("bigBox");
+		// this.animate({height: '400px', '40%'}, 300);
+	});
 }
 
 // indeedApp.handleSubmit = function(e) {
@@ -88,7 +96,7 @@ indeedApp.displayJobs = function(jobs) {
 
 		let jobTitle = `<h3>${job.jobtitle}<h3>`;
 		let jobComp = `<h4>${job.company}<h4>`;
-		let jobDesc = `<p>${job.snippet}<p>`
+		let jobDesc = `<p class="jobDesc">${job.snippet}<p>`
 		console.log(job.url)
 		let jobUrl = `<a href ${job.url}>website</a>`
 		let jobCard = $(`<div class="jobCard-container">`).append(jobTitle, jobComp, jobDesc, jobUrl)
