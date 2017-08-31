@@ -1,26 +1,27 @@
 
 // FONTS
-$MainFont: 'Open Sans', sans-serif;
+$bodyFont: 'Open Sans', sans-serif;
+$headerFont: 'loveloblack', 'arial', sans-serif;
 
 
 // FONT WEIGHTS
 $light: 300;
 $normal: 400;
-$semibold: 600;
+$bold: 700;
+$extraBold: 800;
 
 
 // COLOURS
-$Primary: rgb(20,171,244);
-$lightGrey: rgb(216,215,215);
-$bleedGrey: rgba(233,233,233,0.8);
-$gradientPrimary: rgb(51,180,255);
-$gradientSecondary: rgb(135,133,255);
-$textPrimary: rgb(109,109,109);
-$textSecondary: rgb(35,183,239);
+$primaryGreen: #70C1B3;
+$accentBlue: #247BA0;
+$accentYellow: #F3FFBD;
+$accentPink: #FF1654;
+
+// $textPrimary: ;
+// $textSecondary: ;
 
 
 // DEVICE SIZES
-
 
 // $tablet: "max-width: 1024px";
 // $small: "max-width: 950px";

@@ -1,12 +1,13 @@
 @import 'setup';
+@import 'variables';
 
 
 @font-face {
 	font-family: 'loveloblack', arial, sans-serif ;
 	src: url('lovelo_black-webfont.woff2') format('woff2'),
 		url('lovelo_black-webfont.woff') format('woff');
-	font-weight: normal;
-	font-style: normal;
+	// font-weight: normal;
+	// font-style: normal;
 }
 body {
 	background-color: blue;
@@ -22,14 +23,14 @@ body {
 
 
 body {
-	background: skyblue;
+	background: $primaryGreen;
 	font-family: 'Open Sans', sans-serif;
 
 }
 
 
 .jobDesc {
-		display: none;
+	display: none;
 }
 
 p.bigBox {
