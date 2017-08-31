@@ -1,10 +1,23 @@
 @import 'setup';
 
-.container {
-	max-width: 900px;
-	margin: 0 auto;
-}
+
 
 body {
 	background: skyblue;
 }
+
+.wrapper {
+	max-width: 1150px;
+	margin: 0 auto;
+}
+
+
+
+.jobCard-container {
+	display: block;
+	max-width: calc(50% - 40px);
+	float: left;
+	margin: 20px;
+	// height: 400px;
+}
+
