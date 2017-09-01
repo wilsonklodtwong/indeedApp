@@ -22,7 +22,6 @@ var formInputs = {};
 indeedApp.init = () => {
 	indeedApp.events();
 	console.log('hi!');
-
 };
 
 // Event Listeners
