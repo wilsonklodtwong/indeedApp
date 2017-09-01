@@ -13,9 +13,6 @@ body {
 	background-color: blue;
 }
 
-* {
-	transition: all 0.5s ease-in-out;
-}
 .container {
 	max-width: 900px;
 	margin: 0 auto;
@@ -25,16 +22,17 @@ body {
 body {
 	background: $primaryGreen;
 	font-family: 'Open Sans', sans-serif;
-
 }
 
 
 .jobDesc {
 	display: none;
+	// transition: display 0.6s ease-in-out;
 }
 
 p.bigBox {
 	display: block;
+
 }
 
 .wrapper {
@@ -48,6 +46,12 @@ p.bigBox {
 	float: left;
 	margin: 20px;
 	// height: 400px;
+}
+
+.jobTitle {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 
 .fixed-header {
