@@ -53,6 +53,7 @@ indeedApp.events = function() {
 		for (i = 0; i <= 9; i++) {
 			indeedApp.getJobs(i); // Make AJAX call on Submit
 		}
+			// $('.userInputs__nav').css("display"; "block");
 
 		$('.cardsContainer').empty();
 
