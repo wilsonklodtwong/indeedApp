@@ -14,13 +14,13 @@
 
 @mixin breakpoint($breakpoint) {
   @if $breakpoint == "phone" {
-    @media (max-width: 480px) {
+    @media (max-width: 670px) {
       @content;
     }
   }
 
   @else if $breakpoint == "tablet" {
-    @media (max-width: 768px) {
+    @media (max-width: 880px) {
       @content;
     }
   }

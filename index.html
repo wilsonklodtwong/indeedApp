@@ -7,9 +7,10 @@
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800" rel="stylesheet">
 	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet"
-	  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-	  <script src="https://use.fontawesome.com/9b1f59a0bf.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+	<script src="https://use.fontawesome.com/9b1f59a0bf.js"></script>
+<!-- 	<link rel="stylesheet" type="text/css" href="vendors/sweetalert-master/dist/sweetalert.css"> -->
+	<!-- <script src="vendors/sweetalert-master/dist/sweetalert.min.js"></script> -->
 </head>
 <body>
 	<section class="appInputs cleafix">
@@ -39,36 +40,41 @@
 				<input type="text" id="jobLocation" value="Toronto" placeholder="Toronto, On ">
 			</div>
 			<div class="formInputContainer">
-				<button class="userSubmit" type="submit"> <i class="fa fa-search" aria-hidden="true"></i>Find Job Postings</button> 
+				<button class="userSubmit" type="submit"> <i class="fa fa-search" aria-hidden="true"></i>Find Job Postings</button>
+				<button class="userSubmit hidden" type="submit"> <i class="fa fa-search" aria-hidden="true"></i>Find Job</button>  
 			</form>
 		</div>
 	</section>
 	<nav class="clearfix">
 		<div class="nav">
 			<form class="userInputs userInputs__nav" action="">
-				<p>I want to</p>
+				<p class="hidden">I want to</p>
 				<p>work</p>
 				<select class="jobType jobType__nav">
 					<option value="" disabled selected>Job Type</option>
-					<option value="1">Part Time</option>
-					<option value="2">Full Time</option>
-					<option value="3">Contract</option>
-					<option value="4">Internship</option>
-					<option value="5">Temporary</option>
+					<option value="parttime">Part Time</option>
+					<option value="fulltime">Full Time</option>
+					<option value="contract">Contract</option>
+					<option value="internship">Internship</option>
+					<option value="temporary">Temporary</option>
 				</select>
 				<p>as a</p>
 				<input type="text" class="jobTitle jobTitle__nav" value="web developer" placeholder="any job">
 				<p>in</p> 
 				<input type="text" id="jobLocation__nav" value="Toronto" placeholder="Toronto, On ">
 			<div class="formInputContainer">
-				<button class="userSubmit userSubmit__nav" type="submit"> Find Job</button> 
+				<button class="userSubmit userSubmit__nav" type="submit">Find Job</button>
+				<button class="userSubmit userSubmit__nav hidden1" type="submit">Find</button>
 			</div>
 			</form>
 		</div>
 	</nav>
 	<section class="appOutputs">
 		<div class="wrapper">
-			<div class="cardsContainer clearfix">
+			<div class="cardsContainer containerLeft clearfix">
+				
+			</div>
+			<div class="cardsContainer containerRight clearfix">
 				
 			</div>
 		</div>
