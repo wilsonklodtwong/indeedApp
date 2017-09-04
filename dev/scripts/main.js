@@ -61,7 +61,7 @@ indeedApp.events = () => {
 	// Expand boxes on Click
 	$('.cardsContainer').on('click', '.jobCard-container', function(){
 		const expand = $(this).find('.jobDesc');
-		expand.toggleClass('bigBox')
+		expand.slideToggle(500)
 	});
 }
 
