@@ -38,23 +38,27 @@ indeedApp.init = () => {
 };
 
 // Event Listeners
-indeedApp.events = () => {
+indeedApp.events = function() {
 
 	// on submit of Form element
-	$('form').on('submit', function(e) { 
+	$('.userInputs').on('submit', function(e) { 
 		e.preventDefault();
-
-		$('.userInputs').addClass('fixed-header'); // sticky header add-class
-
-		$('.cardsContainer').empty(); // empty container
-
-		formInputs.query = $('.jobTitle').val(); // Grab Input Value and put in formInputs Object
-		formInputs.location = $('#jobLocation').val();
-		formInputs.type = $('.jobType').val();
+		// Grab Input Value and put in formInputs Object
+		formInputs.query = $(this).find('.jobTitle').val();
+		formInputs.location = $(this).find('#jobLocation').val();
+		formInputs.type = $(this).find('.jobType').val();
 
 		for (i = 0; i <= 9; i++) {
 			indeedApp.getJobs(i); // Make AJAX call on Submit
 		}
+
+		$('html,body').animate({
+			scrollTop: $(".cardsContainer").offset().top},
+			'slow');
+
+		$('.cardsContainer').empty(); // empty container
+
+		$('.nav').addClass('sticky animated slideInDown');
 
 	});
 
@@ -115,43 +119,43 @@ indeedApp.displayJobs = function(jobs) {
 	})
 };
 
-// HELP FROM CODEPEN <https://codepen.io/stacigh/pen/Lxbdo?page=1&>
+// // HELP FROM CODEPEN STARTS <https://codepen.io/stacigh/pen/Lxbdo?page=1&>
 
-// Even when the window is resized, run this code.
-$(window).resize(function(){
+// // Even when the window is resized, run this code.
+// $(window).resize(function(){
   
-  // Variables
-  var windowHeight = $(window).height();
+//   // Variables
+//   var windowHeight = $(window).height();
   
-  // Find the value of 90% of the viewport height
-  var ninetypercent = .9 * windowHeight;
+//   // Find the value of 90% of the viewport height
+//   var ninetypercent = .99 * windowHeight;
   
-  // When the document is scrolled ninety percent, toggle the classes
-  // Does not work in iOS 7 or below
-  // Hasn't been tested in iOS 8
-  $(document).scroll(function(){
+//   // When the document is scrolled ninety percent, toggle the classes
+//   // Does not work in iOS 7 or below
+//   // Hasn't been tested in iOS 8
+//   $(document).scroll(function(){
 	
-	// Store the document scroll function in a variable
-	var y = $(this).scrollTop();
+// 	// Store the document scroll function in a variable
+// 	var y = $(this).scrollTop();
 	
-	// If the document is scrolled 90%
-	if( y > ninetypercent) {
+// 	// If the document is scrolled 90%
+// 	if( y > ninetypercent) {
 	  
-	  // Add the "sticky" class
-	  $('.nav').addClass('sticky');
-	  $('.nav').show(400);
-	} else {
-	  // Else remove it.
-	  $('.nav').removeClass('sticky')
-	  $('.nav').hide(400);
-	}
-  });
+// 	  // Add the "sticky" class
+// 	  $('.nav').addClass('sticky');
+// 	  $('.nav').show(400);
+// 	} else {
+// 	  // Else remove it.
+// 	  $('.nav').removeClass('sticky')
+// 	  $('.nav').hide(400);
+// 	}
+//   });
 
-// Call it on resize.
-}).resize();
+// // Call it on resize.
+// }).resize();
 
 
-// HELP FROM CODEPEN ENDS
+// // HELP FROM CODEPEN ENDS
 
 // Document Ready
 $(indeedApp.init);
