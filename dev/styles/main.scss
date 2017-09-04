@@ -22,16 +22,16 @@ body {
 	background: $primaryGreen;
 	font-family: 'Open Sans', sans-serif;
 	color: #fff;
-	font-size: 56px;
+	font-size: 46px;
 	font-weight: 300;
 }
 
 .logo h1 {
 	text-align: center;
 	text-transform: uppercase;
-	font-size: 50px;
+	font-size: 40px;
 	color: #fff;
-	margin: 20px 0;
+	margin: 0;
 	padding: 40px 0px;
 }
 .logo-color {
@@ -43,7 +43,6 @@ p {
 
 .formInputContainer {
 	width: 100%;
-	margin: 10px 0;
 	padding: 10px 0px;
 }
 
@@ -53,20 +52,17 @@ input[type=text]::placeholder {
 }
 
 .userInputs {
-	width: 80%;
+	width: 60%;
 	margin: 0 auto;
 }
 
 .formInputContainer p {
-	appearance: none;
-	text-align: center;
 	display: inline-block;
 }
 
-// .userInputs__hero p:first-of-type {
-// 	// width: 20%;
-// 	display: block;
-// }
+.userInputs__hero {
+	display: block;
+}
 
 // .userInputs__hero input {
 // 	width: 80%;
@@ -99,6 +95,7 @@ p.bigBox {
 .wrapper {
 	max-width: 1150px;
 	margin: 0 auto;
+	display: block;
 }
 
 .appInputs {
@@ -112,7 +109,7 @@ input.jobTitle, .jobType, #jobLocation, #jobLocation__nav {
 	border-style: none;
 	border-radius: none;
 	border-bottom: 4px dotted #fff;
-	font-size: 56px;
+	font-size: 46px;
 	font-weight: 800;
 	text-transform: uppercase;
 	color: $accentBlue;
@@ -152,7 +149,7 @@ input.jobTitle, .jobType, #jobLocation, #jobLocation__nav {
 	text-transform: uppercase;
 	font-weight: 700;
 	padding: 0px 10px 0px 10px;
-	font-size: 34px;
+	font-size: 24px;
 	background-color: #fff;
 	color: $accentBlue;
 	border: none;
@@ -172,17 +169,19 @@ input.jobTitle, .jobType, #jobLocation, #jobLocation__nav {
 	border-bottom: 1px solid $accentYellow;
 	& > * {
 		display: inline-block;
-		font-size: 30px;
+		font-size: 20px;
 		max-width: 15%;
 	}
 	.jobTitle__nav, #jobLocation__nav, .userSubmit__nav {
-		font-size: 30px;
+		font-size: 20px;
 	}
 }
 
 .sticky {
 	position:fixed;
+	width: 100%;
 	top: 0;
+	animation-delay: 0.5s;
 }
 
 // Card Styling
@@ -194,28 +193,28 @@ input.jobTitle, .jobType, #jobLocation, #jobLocation__nav {
 	h3 {
 		font-family:'Open Sans', sans-serif;
 		color: $accentBlue;
-		font-size: 30px;
+		font-size: 20px;
 		font-weight: 400px;
 		margin: 0;
 	}
 	h4 {
 		font-family:'Open Sans', sans-serif;
 		color: black;
-		font-size: 30px;
+		font-size: 20px;
 		font-weight: 300;
 		margin: 0;
 	}
 	a {
 		font-family:'Open Sans', sans-serif;
 		color: black;
-		font-size: 24px;
+		font-size: 14px;
 		font-weight: 300;
 		margin: 0;
 	}
 	p {
 		font-family:'Open Sans', sans-serif;
 		color: black;
-		font-size: 24px;
+		font-size: 14px;
 		margin: 0;
 	}
 	.jobDesc {
