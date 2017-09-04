@@ -125,16 +125,26 @@ input.jobTitle, .jobType, #jobLocation, #jobLocation__nav {
 	@include bodyText;
 }
 
-.jobTitle {
+h3 {
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
 }
 
+h4 {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+h5 {
+	text-align: center;	
+}
 
 .appOutputs {
 	padding-top: 20px;
 }
+
 
 .userSubmit-container {
 	width: 100%;
