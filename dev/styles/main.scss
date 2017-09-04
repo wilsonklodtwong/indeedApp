@@ -47,12 +47,18 @@ p {
 	padding: 10px 0px;
 }
 
+input[type=text]::placeholder {
+	text-transform: uppercase;
+	color: $accentBlue;
+}
+
 .userInputs {
 	width: 80%;
 	margin: 0 auto;
 }
 
 .formInputContainer p {
+	appearance: none;
 	text-align: center;
 	display: inline-block;
 }
