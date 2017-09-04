@@ -4,6 +4,32 @@ indeedApp.apiKey = '1211867702868069';
 indeedApp.endpoint = 'https://api.indeed.com/ads/apisearch';
 
 
+// Google Autocomplete for Main Form
+google.maps.event.addDomListener(window, 'load', () => {
+	const places = new google.maps.places.Autocomplete(document.getElementById('jobLocation'));
+	google.maps.event.addListener(places, 'place_changed', () => {
+	const place = places.getPlace();
+
+	// grabs 2 character country code to use in AJAX call
+	let addressComponentArrayLength = place.address_components.length; 
+	formInputs.country = place.address_components[addressComponentArrayLength - 1].short_name; 
+	console.log(place)
+	});
+});
+
+// // Good Autocomplete for sticky Header
+google.maps.event.addDomListener(window, 'load', () => {
+	const places = new google.maps.places.Autocomplete(document.getElementById('jobLocation__nav'));
+	google.maps.event.addListener(places, 'place_changed', () => {
+	const place = places.getPlace();
+
+	// grabs 2 character country code to use in AJAX call
+	let addressComponentArrayLength = place.address_components.length; 
+	formInputs.country = place.address_components[addressComponentArrayLength - 1].short_name; 
+	console.log(place)
+	});
+});
+
 // set up formInputs object
 const formInputs = {};
 let places;
@@ -17,32 +43,15 @@ indeedApp.init = () => {
 };
 
 // Event Listeners
-indeedApp.events = () => {
+indeedApp.events = function() {
 
-// Google Autocomplete
-google.maps.event.addDomListener(window, 'load', function () {
-	places = new google.maps.places.Autocomplete(document.getElementById('jobLocation'));
-	google.maps.event.addListener(places, 'place_changed', function () {
-	place = places.getPlace();
-
-	// grabs 2 character country code to use in AJAX call
-	addressComponentArrayLength = place.address_components.length; 
-	 
-	console.log(place);
-	});
-});
-
- 	// on submit of Form element
-	$('form').on('submit', function(e) { 
+	// on submit of Form element
+	$('.userInputs').on('submit', function(e) { 
 		e.preventDefault();
-
-		$('.userInputs').addClass('fixed-header'); // sticky header add-class
-
-		$('.cardsContainer').empty(); // empty container
-
-		formInputs.query = $('.jobTitle').val(); // Grab Input Value and put in formInputs Object
-		formInputs.location = $('#jobLocation').val();
-		formInputs.type = $('.jobType').val();
+		// Grab Input Value and put in formInputs Object
+		formInputs.query = $(this).find('.jobTitle').val();
+		formInputs.location = $(this).find('#jobLocation').val();
+		formInputs.type = $(this).find('.jobType').val();
 
 
 		//trying to get country to rewrite itself as undefined when invalid location inputted
@@ -57,12 +66,20 @@ google.maps.event.addDomListener(window, 'load', function () {
 			alert('Please enter a valid city or region');
 		}
 
+		$('html,body').animate({
+			scrollTop: $(".cardsContainer").offset().top},
+			'slow');
+
+		$('.cardsContainer').empty(); // empty container
+
+		$('.nav').addClass('sticky animated slideInDown');
+
 	});
 
 	// Expand boxes on Click
 	$('.cardsContainer').on('click', '.jobCard-container', function(){
 		const expand = $(this).find('.jobDesc');
-		expand.toggleClass('bigBox')
+		expand.slideToggle(500)
 	});
 }
 
@@ -107,7 +124,7 @@ indeedApp.displayJobs = function(jobs) {
 		let jobTitle = `<h3>${job.jobtitle}<h3>`;
 		let jobComp = `<h4>${job.company}<h4>`;
 		let jobDesc = `<p class="jobDesc">${job.snippet}<p>`
-		let jobUrl = `<a href=${job.url} target="_blank">website</a>`
+		let jobUrl = `<a href=${job.url} target="_blank">Full Job Posting</a>`
 		let jobCard = $(`<div class="jobCard-container animated">`).append(jobTitle, jobComp, jobDesc, jobUrl)
 
 
@@ -116,46 +133,43 @@ indeedApp.displayJobs = function(jobs) {
 	})
 };
 
+// // HELP FROM CODEPEN STARTS <https://codepen.io/stacigh/pen/Lxbdo?page=1&>
+
+// // Even when the window is resized, run this code.
+// $(window).resize(function(){
+  
+//   // Variables
+//   var windowHeight = $(window).height();
+  
+//   // Find the value of 90% of the viewport height
+//   var ninetypercent = .99 * windowHeight;
+  
+//   // When the document is scrolled ninety percent, toggle the classes
+//   // Does not work in iOS 7 or below
+//   // Hasn't been tested in iOS 8
+//   $(document).scroll(function(){
+	
+// 	// Store the document scroll function in a variable
+// 	var y = $(this).scrollTop();
+	
+// 	// If the document is scrolled 90%
+// 	if( y > ninetypercent) {
+	  
+// 	  // Add the "sticky" class
+// 	  $('.nav').addClass('sticky');
+// 	  $('.nav').show(400);
+// 	} else {
+// 	  // Else remove it.
+// 	  $('.nav').removeClass('sticky')
+// 	  $('.nav').hide(400);
+// 	}
+//   });
+
+// // Call it on resize.
+// }).resize();
+
+
+// // HELP FROM CODEPEN ENDS
+
 // Document Ready
 $(indeedApp.init);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// THAT WHOLE REACT STYLE THING WOWZA::
-
-// class JobCard {
-// 	constructor(jobTitle, jobDesc) {
-// 		this.jobTitle = jobTitle;
-// 		this.jobDesc = jobDesc;
-// 	}
-// 	print() {
-// 		let jobCard = $(`<div class="jobCard-container">`).append(`<h3>${this.jobTitle}<h3><p>${this.jobDesc}<p>`);
-// 		$('.cardsContainer').append(jobCard);
-// 	}
-// }
-// indeedApp.displayJobs  = function(jobs) {
-// 		jobs.forEach(function(job) {
-// 			const card = new JobCard(job.jobtitle, job.snippet);
-// 			card.print();
-// 		})
-// }
-

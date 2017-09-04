@@ -24,26 +24,66 @@ body {
 	background: $primaryGreen;
 	font-family: 'Open Sans', sans-serif;
 	color: #fff;
-	font-size: 82px;
+	font-size: 46px;
 	font-weight: 300;
 }
 
 .logo h1 {
 	text-align: center;
 	text-transform: uppercase;
-	font-size: 62px;
+	font-size: 40px;
 	color: #fff;
+	margin: 0;
+	padding: 40px 0px;
 }
 .logo-color {
 	color: $accentYellow;
 }
-p {
+p {	
 	margin: 0;
 }
 
-.userInputs {
+.formInputContainer {
 	width: 100%;
+	padding: 10px 0px;
 }
+
+input[type=text]::placeholder {
+	text-transform: uppercase;
+	color: $accentBlue;
+}
+
+.userInputs {
+	width: 60%;
+	margin: 0 auto;
+}
+
+.formInputContainer p {
+	display: inline-block;
+}
+
+.userInputs__hero {
+	display: block;
+}
+
+// .userInputs__hero input {
+// 	width: 80%;
+// }
+// .userInputs__hero {}
+// 	& > * {
+// 		display: inline-block;
+// 	}
+// 	p.userInputs__hero {
+// 		width: 20%;
+// 	} 
+// 	input.userInputs__hero {
+// 		width: 80%;
+// 	}
+// 	p:first-of-type {
+// 		width: 100%;
+// 	}
+// }
+
 .jobDesc {
 	display: none;
 	// transition: display 0.6s ease-in-out;
@@ -57,16 +97,21 @@ p.bigBox {
 .wrapper {
 	max-width: 1150px;
 	margin: 0 auto;
+	display: block;
 }
 
-input.jobTitle, .jobType, #jobLocation {
+.appInputs {
+	height: 100vh;
+}
+
+input.jobTitle, .jobType, #jobLocation, #jobLocation__nav {
 	display: inline-block;
 	width: 60%;
 	background-color: $primaryGreen;
 	border-style: none;
 	border-radius: none;
 	border-bottom: 4px dotted #fff;
-	font-size: 82px;
+	font-size: 46px;
 	font-weight: 800;
 	text-transform: uppercase;
 	color: $accentBlue;
@@ -86,29 +131,98 @@ input.jobTitle, .jobType, #jobLocation {
 	text-overflow: ellipsis;
 }
 
-// .fixed-header {
-// 	// position: fixed;
-// 	// top:0; left:0;
-// 	// width: 100%;
-// }
+
+.appOutputs {
+	padding-top: 20px;
+}
 
 .userSubmit-container {
 	width: 100%;
 	margin: 0;
 }
-.userSubmit-container p{
-	background-color: $accentYellow;
-	color: $accentBlue;
-	padding: 0 10px;
-	float: left;
-}
+// .userSubmit-container p{
+// 	background-color: $accentYellow;
+// 	color: $accentBlue;
+// 	padding: 0 10px;
+// 	float: left;
+// }
 .userSubmit {
 	text-transform: uppercase;
-	padding: 30px;
 	font-weight: 700;
-	font-size: 32px;
+	padding: 0px 10px 0px 10px;
+	font-size: 24px;
 	background-color: #fff;
 	color: $accentBlue;
 	border: none;
+	i {
+		padding: 15px;
+		background: $accentYellow;
+		margin-left: -10px;
+		margin-right: 10px;
+	}
 }
 
+.userInputs__nav {
+	width: 100%;
+	// display: none;
+	text-align: center;
+	background: $primaryGreen;
+	padding: 20px 0px;
+	border-bottom: 1px solid $accentYellow;
+	& > * {
+		display: inline-block;
+		font-size: 20px;
+		max-width: 15%;
+	}
+	.jobTitle__nav, #jobLocation__nav, .userSubmit__nav {
+		font-size: 20px;
+	}
+}
+
+.sticky {
+	position:fixed;
+	display: block;
+	width: 100%;
+	top: 0;
+	animation-delay: 0.5s;
+}
+
+// Card Styling
+.jobCard-container {
+	background-color: #fff;
+	padding: 15px 10px;
+	border-top: 10px solid #B8DDD5; 
+	box-shadow: 0px 2px 4px rgba(0,0,0,0.30);
+	h3 {
+		font-family:'Open Sans', sans-serif;
+		color: $accentBlue;
+		font-size: 20px;
+		font-weight: 400px;
+		margin: 0;
+	}
+	h4 {
+		font-family:'Open Sans', sans-serif;
+		color: black;
+		font-size: 20px;
+		font-weight: 300;
+		margin: 0;
+	}
+	a {
+		font-family:'Open Sans', sans-serif;
+		color: black;
+		font-size: 14px;
+		font-weight: 300;
+		margin: 0;
+	}
+	p {
+		font-family:'Open Sans', sans-serif;
+		color: black;
+		font-size: 14px;
+		margin: 0;
+	}
+	.jobDesc {
+		border-top: 2px solid $primaryGreen;
+		padding: 20px 0px;
+		// min-height: 170px;
+	}
+}

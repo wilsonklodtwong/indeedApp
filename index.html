@@ -9,38 +9,63 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet"
 	  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+	  <script src="https://use.fontawesome.com/9b1f59a0bf.js"></script>
 </head>
 <body>
-	<section>
+	<section class="appInputs cleafix">
 		<div class="logo wrapper">
 			<h1>job<span class="logo-color">seeker</span></h1>
 		</div>
-
-	</section>
-	<section>
-		<div class="user wrapper">
+		<div class="user wrapper clearfix">
+			<form class="userInputs userInputs__hero clearfix" action="">
 			<p>I want to ...</p>
-			<form class="userInputs" action="">
-				work
+			<div class="formInputContainer">
+				<p>work</p>
 				<select class="jobType">
 					<option value="" disabled selected>Job Type</option>
-					<option value="1">PartTime</option>
-					<option value="2">FullTime</option>
+					<option value="parttime">Part Time</option>
+					<option value="fulltime">Full Time</option>
+					<option value="contract">Contract</option>
+					<option value="internship">Internship</option>
+					<option value="temporary">Temporary</option>
+				</select>
+			</div>
+			<div class="formInputContainer">
+				<p>as a</p>
+				<input type="text" class="jobTitle" value="web developer" placeholder="any job">
+			</div>
+			<div class="formInputContainer">
+				<p>in</p> 
+				<input type="text" id="jobLocation" value="Toronto" placeholder="Toronto, On ">
+			</div>
+			<div class="formInputContainer">
+				<button class="userSubmit" type="submit"> <i class="fa fa-search" aria-hidden="true"></i>Find Job Postings</button> 
+			</form>
+		</div>
+	</section>
+	<nav class="clearfix">
+		<div class="nav">
+			<form class="userInputs userInputs__nav" action="">
+				<p>I want to</p>
+				<p>work</p>
+				<select class="jobType jobType__nav">
+					<option value="" disabled selected>Job Type</option>
+					<option value="1">Part Time</option>
+					<option value="2">Full Time</option>
 					<option value="3">Contract</option>
 					<option value="4">Internship</option>
 					<option value="5">Temporary</option>
 				</select>
 				<p>as a</p>
-				<input type="text" class="jobTitle" placeholder=>
+				<input type="text" class="jobTitle jobTitle__nav" value="web developer" placeholder="any job">
 				<p>in</p> 
-				<input type="text" id="jobLocation" placeholder="Enter a City or Region">
-			<div class="userSubmit-container">
-				<p>&#8702;</p>	
-				<button class="userSubmit" type="submit">Find Job Postings</button> 
+				<input type="text" id="jobLocation__nav" value="Toronto" placeholder="Toronto, On ">
+			<div class="formInputContainer">
+				<button class="userSubmit userSubmit__nav" type="submit"> Find Job</button> 
 			</div>
 			</form>
 		</div>
-	</section>
+	</nav>
 	<section class="appOutputs">
 		<div class="wrapper">
 			<div class="cardsContainer clearfix">
