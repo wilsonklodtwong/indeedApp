@@ -115,7 +115,7 @@ indeedApp.displayJobs = function(jobs) {
 	})
 };
 
-// HELP FROM CODEPEN <https://codepen.io/stacigh/pen/Lxbdo?page=1&>
+// HELP FROM CODEPEN STARTS <https://codepen.io/stacigh/pen/Lxbdo?page=1&>
 
 // Even when the window is resized, run this code.
 $(window).resize(function(){
@@ -124,7 +124,7 @@ $(window).resize(function(){
   var windowHeight = $(window).height();
   
   // Find the value of 90% of the viewport height
-  var ninetypercent = .9 * windowHeight;
+  var ninetypercent = .99 * windowHeight;
   
   // When the document is scrolled ninety percent, toggle the classes
   // Does not work in iOS 7 or below
