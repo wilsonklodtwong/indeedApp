@@ -3,21 +3,13 @@ const indeedApp = {};
 indeedApp.apiKey = '1211867702868069';
 indeedApp.endpoint = 'https://api.indeed.com/ads/apisearch';
 
-// Google Autocomplete
-google.maps.event.addDomListener(window, 'load', function () {
-	const places = new google.maps.places.Autocomplete(document.getElementById('jobLocation'));
-	google.maps.event.addListener(places, 'place_changed', function () {
-	const place = places.getPlace();
-
-	// grabs 2 character country code to use in AJAX call
-	let addressComponentArrayLength = place.address_components.length; 
-	formInputs.country = place.address_components[addressComponentArrayLength - 1].short_name; 
-	console.log(place)
-	});
-});
 
 // set up formInputs object
 const formInputs = {};
+let places;
+let place;
+let addressComponentArrayLength;
+
 
 // Init Function
 indeedApp.init = () => {
@@ -26,6 +18,19 @@ indeedApp.init = () => {
 
 // Event Listeners
 indeedApp.events = () => {
+
+// Google Autocomplete
+google.maps.event.addDomListener(window, 'load', function () {
+	places = new google.maps.places.Autocomplete(document.getElementById('jobLocation'));
+	google.maps.event.addListener(places, 'place_changed', function () {
+	place = places.getPlace();
+
+	// grabs 2 character country code to use in AJAX call
+	addressComponentArrayLength = place.address_components.length; 
+	 
+	console.log(place);
+	});
+});
 
  	// on submit of Form element
 	$('form').on('submit', function(e) { 
@@ -39,8 +44,17 @@ indeedApp.events = () => {
 		formInputs.location = $('#jobLocation').val();
 		formInputs.type = $('.jobType').val();
 
-		for (i = 0; i <= 9; i++) {
+
+		//trying to get country to rewrite itself as undefined when invalid location inputted
+		formInputs.country = place.address_components[addressComponentArrayLength - 1].short_name;
+		console.log(formInputs.country);
+
+		if (formInputs.country !== undefined) {
+			for (i = 0; i <= 9; i++) {
 			indeedApp.getJobs(i); // Make AJAX call on Submit
+		}
+		} else {
+			alert('Please enter a valid city or region');
 		}
 
 	});
