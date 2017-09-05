@@ -4,39 +4,23 @@
   font-size: $font-size;
 }
 
-@mixin bodyText ($font-size: 3rem) {
-  font-family: $MainFont;
-  color: $textSecondary;
-  font-weight: $normal;
-  font-size: $font-size;
-}
-
-@mixin bodyText ($font-size: 1.4rem) {
-  font-family: $MainFont;
-  color: $textPrimary;
-  font-weight: $normal;
-  font-size: $font-size;
-}
-
-@mixin lightText ($font-size: 1.3rem) {
-  font-family: $MainFont;
-  color: $textPrimary;
+@mixin bodyText ($font-size: 1.2rem) {
+  font-family: $bodyFont;
   font-weight: $light;
   font-size: $font-size;
 }
-
 
 // PUt in media queries here
 
 @mixin breakpoint($breakpoint) {
   @if $breakpoint == "phone" {
-    @media (max-width: 480px) {
+    @media (max-width: 670px) {
       @content;
     }
   }
 
   @else if $breakpoint == "tablet" {
-    @media (max-width: 768px) {
+    @media (max-width: 880px) {
       @content;
     }
   }

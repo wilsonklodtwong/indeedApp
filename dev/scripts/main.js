@@ -3,6 +3,7 @@ const indeedApp = {};
 indeedApp.apiKey = '1211867702868069';
 indeedApp.endpoint = 'https://api.indeed.com/ads/apisearch';
 
+
 // Google Autocomplete for Main Form
 google.maps.event.addDomListener(window, 'load', () => {
 	const places = new google.maps.places.Autocomplete(document.getElementById('jobLocation'));
@@ -31,6 +32,10 @@ google.maps.event.addDomListener(window, 'load', () => {
 
 // set up formInputs object
 const formInputs = {};
+// let places;
+// let place;
+// let addressComponentArrayLength;
+
 
 // Init Function
 indeedApp.init = () => {
@@ -49,11 +54,8 @@ indeedApp.events = function() {
 		formInputs.location = $(this).find('#jobLocation').val();
 		formInputs.type = $(this).find('.jobType').val();
 
+		indeedApp.getJobs(); // Make AJAX call on Submit
 
-		for (i = 0; i <= 9; i++) {
-			indeedApp.getJobs(i); // Make AJAX call on Submit
-		}
-			// $('.userInputs__nav').css("display"; "block");
 
 		$('.cardsContainer').empty();
 
@@ -69,7 +71,7 @@ indeedApp.events = function() {
 	// Expand boxes on Click
 	$('.cardsContainer').on('click', '.jobCard-container', function(){
 		const expand = $(this).find('.jobDesc');
-		expand.slideToggle(500)
+		expand.slideToggle(500);
 	});
 }
 
@@ -87,36 +89,105 @@ indeedApp.getJobs = function() {
 				format: 'json',
 				q: formInputs.query,
 				l: formInputs.location,
-				// sort: 'relevance',
 				radius: 25,
-				// st: 'jobsite',
 				jt: formInputs.type,
 				// start: i === 0 ? 0 : i * 24 + 1,
-				start: i * 24,
+				start: 0,
 				limit: 24,
-				// fromage: 14,
-				// filter: 0,
-				latlong: 1,
+				hightlight: 1,
 				co: formInputs.country
 			},
 		},
 	})
 	.then(function(res) {
-		const jobsDataArray = res.results;
-		indeedApp.jobsDataObject = res;
-		indeedApp.displayJobs(jobsDataArray);
-		console.log(res)
-	});
+		// console.log(res);
+		// console.log(res.results);
+		
+		// calculate how many ajax calls in the for loop
+		if (res.totalResults <= 24) {
+			let jobsDataArray = res.results;
+			let jobsTotalResults = res.totalResults;
+			// console.log(jobsTotalResults);
+			indeedApp.displayJobs(jobsDataArray, jobsTotalResults);
+		} else if (res.totalResults <= 480) {
+			// for (i = 1; i <= Math.floor(res.totalResults / 24); i++) {
+			for (i = 1; i <= Math.floor(res.totalResults / 24); i++) {
+				$.ajax({
+				url: 'https://proxy.hackeryou.com',
+				dataType: 'json',
+				method: 'GET',
+				data: {
+					reqUrl: indeedApp.endpoint,
+					params: {
+						publisher: indeedApp.apiKey,
+						v: 2,
+						format: 'json',
+						q: formInputs.query,
+						l: formInputs.location,
+						radius: 25,
+						jt: formInputs.type,
+						start: i * 24,
+						limit: 24,
+						hightlight: 1,
+						co: formInputs.country
+					},
+				},
+			})
+			.then (function(res) {
+				// console.log(res);
+				// console.log(res.results);
+				jobsDataArray = res.results;
+				indeedApp.displayJobs(jobsDataArray)
+			})
+		}
+		} else if (res.totalResults > 480) {
+			for (i = 1; i <= 20; i++) {
+				$.ajax({
+				url: 'https://proxy.hackeryou.com',
+				dataType: 'json',
+				method: 'GET',
+				data: {
+					reqUrl: indeedApp.endpoint,
+					params: {
+						publisher: indeedApp.apiKey,
+						v: 2,
+						format: 'json',
+						q: formInputs.query,
+						l: formInputs.location,
+						radius: 25,
+						jt: formInputs.type,
+						start: i * 24,
+						limit: 24,
+						hightlight: 1,
+						co: formInputs.country
+					},
+				},
+			})
+			.then (function(res) {
+				// console.log(res);
+				// console.log(res.results);
+				jobsDataArray = res.results;
+				indeedApp.displayJobs(jobsDataArray)
+			})
+		}
+	}
+})
 };
 
-indeedApp.displayJobs = function(jobs) {
-	jobs.forEach(function(job, i) {
-		let jobTitle = `<h3>${job.jobtitle}<h3>`;
-		let jobComp = `<h4>${job.company}<h4>`;
-		let jobDesc = `<p class="jobDesc">${job.snippet}<p>`
-		let jobUrl = `<a href=${job.url} target="_blank">Full Job Posting</a>`
-		let jobCard = `<div class="jobCard-container animated">${jobTitle}${jobComp}${jobDesc}${jobUrl}`
+indeedApp.displayJobs = function(jobs, results) { 
 
+	if (results === 0) {
+		let noResults = `<h5>Sorry, no results. Please try a different search.</h5>`
+		$('.cardsContainer').append(noResults);
+	}
+
+	jobs.forEach(function(job, i) {
+		let jobTitle = `<h3>${job.jobtitle}</h3>`;
+		let jobComp = `<h4>${job.company}</h4>`;
+		let jobDesc = `<p class="jobDesc">${job.snippet}</p>`
+		let jobUrl = `<a href=${job.url} target="_blank">Full Job Posting</a>`;
+		let jobCard = `<div class="jobCard-container animated">${jobTitle}${jobComp}${jobDesc}${jobUrl}`;
+		console.log(jobCard);
 	// Print Cards
 		if (i % 2 === 0) {
 			$('.containerRight').append(jobCard);
