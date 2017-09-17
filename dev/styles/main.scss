@@ -25,7 +25,23 @@ body {
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 300;
 }
+.logo {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.logo__img {
+	width: 75px;
+	height: 75px;
+	margin: 0 auto;
+	margin-top: 20px;
+}
+.logo__img img {
+	margin: 0 auto;
+	text-align: center;
+	width: 100%;
 
+}
 .logo h1 {
 	font-family: 'loveloblack';
 	text-align: center;
@@ -33,7 +49,7 @@ body {
 	font-size: 40px;
 	color: #fff;
 	margin: 0;
-	padding: 40px 0px;
+	padding: 20px 0px;
 }
 .logo-color {
 	color: $accentYellow;
